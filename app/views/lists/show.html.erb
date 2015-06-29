@@ -12,9 +12,10 @@
           <%= task.description %> |
           <%= link_to "Edit", edit_list_task_path(@list, task) %> |
           <%= link_to "Delete", list_task_path(@list, task),
-                                  data: {confirm: "Are you sure?",
-                                              method: "delete"}%> |
-          <%= link_to "Done", done_list_task_path(@list, task), data: { method: "patch" } %>
+                                  data: { confirm: "Are you sure?",
+                                          method: "delete"}%> |
+          <%= link_to "Done", { controller: "tasks", action: "update", list_id: @list.id, id: task.id, },
+                                method: :patch %>
         </li>
       <% end %>
     <% end %>
@@ -29,8 +30,7 @@
           <%= link_to "Edit", edit_list_task_path(@list, task) %> |
           <%= link_to "Delete", list_task_path(@list, task),
                                   data: {confirm: "Are you sure?",
-                                              method: "delete"}%> |
-          <%= link_to "Done", done_list_task_path(@list, task), data: { method: "patch" } %>
+                                              method: "delete"}%>
         </li>
       <% end %>
     <% end %>
